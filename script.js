@@ -49,10 +49,18 @@ function checkRequired(inputArr) {
     });
 }
 
+function chcekConfirmPassword(input1, input2) {
+    if (input1.value !== input2.value) {
+        showError(input1, `Passwords don't match.`);
+        showError(input2, `Passwords don't match.`)
+    }
+}
+
 form.addEventListener('submit', function submitForm(e) {
     e.preventDefault();
     checkRequired([username, email, password, confirmpassword]);
     checkLength(username, 3, 30);
     checkLength(password, 3, 30);
     checkEmail(email);
+    chcekConfirmPassword(password, confirmpassword);
 })
